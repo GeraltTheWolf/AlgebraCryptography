@@ -26,16 +26,19 @@ def hash_file(algorithm):
     print(result[1] + " - " + hex(int(helper_string_to_bin(hash_data(result[0], algorithm)), 2)))
 
 
-def hash_folder(algorithm):
-    result = helper_read_file_names_in_directory(input("Enter directory path:   "))
+def hash_folder(algorithm, folder_path):
+    result = helper_read_file_names_in_directory(folder_path)
     print(os.path.basename(result[1]))
     for r in result[0]:
         read_file = helper_read_file(result[1] + "/" + r)
         print(read_file[1] + " - " + hex(int(helper_string_to_bin(hash_data(read_file[0], algorithm)), 2)))
 
 
-def hash_folder_recursive():
-    print("Folder recursive")
+def hash_folder_recursive(algorithm, folder_path):
+    hash_folder(algorithm, folder_path)
+    for folder in listdir(folder_path):
+        if isdir(folder_path + '/' + folder):
+            hash_folder_recursive(algorithm, folder_path + '/' + folder);
 
 
 helper_display_menu_(MAIN_MENU_STRINGS[0])
@@ -52,5 +55,7 @@ if main_menu_choice == STRING:
     hash_string(ALGORITHM_NAMES[algorithm_choice])
 elif main_menu_choice == FILE:
     hash_file(ALGORITHM_NAMES[algorithm_choice])
-elif main_menu_choice == FOLDER:
-    hash_folder(ALGORITHM_NAMES[algorithm_choice])
+elif main_menu_choice == FOLDER and sub_main_menu_choice == NON_RECURSIVE:
+    hash_folder(ALGORITHM_NAMES[algorithm_choice], input("Enter directory path:   "))
+elif main_menu_choice == FOLDER and sub_main_menu_choice == RECURSIVE:
+    hash_folder_recursive(ALGORITHM_NAMES[algorithm_choice], input("Enter directory path:   "))
