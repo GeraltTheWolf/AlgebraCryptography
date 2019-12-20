@@ -1,4 +1,56 @@
+import sys
+
+sys.path.append("..")
 from Helper import *
+from Hashing import *
+
+main_menu_choice = -1;
+sub_main_menu_choice = -1;
+
+STRING = 0
+FILE = 1
+FOLDER = 2
+RECURSIVE = 0
+NON_RECURSIVE = 1
+MAIN_MENU_STRINGS = [["hash a string", "hash a file", "hash a content of the folder"], [STRING, FILE, FOLDER]]
+SUB_MENU_RECURSIVE_STRINGS = [["recursive", "non-recursive"], [RECURSIVE, NON_RECURSIVE]]
 
 
-print(helper_get_menu_selection(5))
+def hash_string(algorithm):
+    input_string = input("Enter some string to hash: ")
+    print(hex(int(helper_string_to_bin(hash_data(input_string, algorithm)), 2)))
+
+
+def hash_file(algorithm):
+    result = helper_read_file(input("Enter directory path:   "))
+    print(result[1] + " - " + hex(int(helper_string_to_bin(hash_data(result[0], algorithm)), 2)))
+
+
+def hash_folder(algorithm):
+    result = helper_read_file_names_in_directory(input("Enter directory path:   "))
+    print(os.path.basename(result[1]))
+    for r in result[0]:
+        read_file = helper_read_file(result[1] + "/" + r)
+        print(read_file[1] + " - " + hex(int(helper_string_to_bin(hash_data(read_file[0], algorithm)), 2)))
+
+
+def hash_folder_recursive():
+    print("Folder recursive")
+
+
+helper_display_menu_(MAIN_MENU_STRINGS[0])
+main_menu_choice = helper_get_menu_selection(len(MAIN_MENU_STRINGS[0]), MENU_MAIN)
+
+if main_menu_choice == FOLDER:
+    helper_display_menu_(SUB_MENU_RECURSIVE_STRINGS[0])
+    sub_main_menu_choice = helper_get_menu_selection(len(SUB_MENU_RECURSIVE_STRINGS[0]))
+
+helper_display_menu_(ALGORITHM_NAMES)
+algorithm_choice = helper_get_menu_selection(len(ALGORITHM_NAMES))
+
+if main_menu_choice == STRING:
+    hash_string(ALGORITHM_NAMES[algorithm_choice])
+elif main_menu_choice == FILE:
+    hash_file(ALGORITHM_NAMES[algorithm_choice])
+elif main_menu_choice == FOLDER:
+    hash_folder(ALGORITHM_NAMES[algorithm_choice])
