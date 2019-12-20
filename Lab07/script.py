@@ -1,68 +1,64 @@
-import os
-import hashlib
-import time
+import sys
+
+sys.path.append("..")
+from Helper import *
+from Hashing import *
+
+main_menu_choice = -1;
+sub_main_menu_choice = -1;
+
+STRING = 0
+FILE = 1
+FOLDER = 2
+RECURSIVE = 0
+NON_RECURSIVE = 1
+MAIN_MENU_STRINGS = [["hash a string", "hash a file", "hash a content of the folder"], [STRING, FILE, FOLDER]]
+SUB_MENU_RECURSIVE_STRINGS = [["recursive", "non-recursive"], [RECURSIVE, NON_RECURSIVE]]
 
 
+def hash_string(algorithm):
+    input_string = input("Enter some string to hash: ")
+    print(hex(int(helper_string_to_bin(hash_data(input_string, algorithm)), 2)))
 
 
+def hash_file(algorithm):
+    result = helper_read_file(input("Enter FILE path:   "))
+    print(result[1] + " - " + hex(int(helper_string_to_bin(hash_data(result[0], algorithm)), 2)))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-clear = lambda: os.system('cls')
-hash_object = hashlib.md5(b"Hello world")
-
-main_menu_choice = -1
-
-def print_main_menu():
-    print("Chose:\r\n")
-    print("1 - hash a string\r\n2 - hash a file\r\n3 - hash a content of the folder\r\n0 - Exit\r\n")
-
-
-def save_to_file(message):
-    open("cypto1_" + time.strftime("%Y%m%d-%H%M%S") + ".txt", 'w+').write(message)
-
-def print_algorithms_menu():
-    clear()
-    index_of_algorithm = 1
-    algNames = list(hashlib.algorithms_guaranteed)
-    for a in algNames:
-        print(str(index_of_algorithm) + " - " + a)
-        index_of_algorithm += 1
-    print("0 - Back")
-
-    algorithms_menu_choice = int(input())
-
-    if 0 < algorithms_menu_choice < len(algNames):
-        m = hashlib.new(algNames[algorithms_menu_choice-1])
-        m.update(hash_object)
+def hash_folder(algorithm, folder_path):
+    result = helper_read_file_names_in_directory(folder_path)
+    print("\r\nFOLDER" + os.path.basename(result[1]))
+    for r in result[0]:
         try:
-            hash = m.hexdigest()
+            read_file = helper_read_file(result[1] + "/" + r)
+            print(read_file[1] + " - " + hex(int(helper_string_to_bin(hash_data(read_file[0], algorithm)), 2)))
         except:
-            hash = m.hexdigest(len(hash_object))
-        save_to_file(hash)
+            print("Failed to read file" + r)
 
 
-while main_menu_choice != 0:
-    clear()
-    print_main_menu()
-    main_menu_choice = int(input())
-    if main_menu_choice != 0:
-        print_algorithms_menu()
+def hash_folder_recursive(algorithm, folder_path):
+    hash_folder(algorithm, folder_path)
+    for folder in listdir(folder_path):
+        if isdir(folder_path + '/' + folder):
+            hash_folder_recursive(algorithm, folder_path + '/' + folder);
 
 
-def print_hash_and_file_name(hash,file_name):
-    print()
+helper_display_menu_(MAIN_MENU_STRINGS[0])
+main_menu_choice = helper_get_menu_selection(len(MAIN_MENU_STRINGS[0]), MENU_MAIN)
+
+if main_menu_choice == FOLDER:
+    helper_display_menu_(SUB_MENU_RECURSIVE_STRINGS[0])
+    sub_main_menu_choice = helper_get_menu_selection(len(SUB_MENU_RECURSIVE_STRINGS[0]))
+
+helper_display_menu_(ALGORITHM_NAMES)
+algorithm_choice = helper_get_menu_selection(len(ALGORITHM_NAMES))
+
+if main_menu_choice == STRING:
+    hash_string(ALGORITHM_NAMES[algorithm_choice])
+elif main_menu_choice == FILE:
+    hash_file(ALGORITHM_NAMES[algorithm_choice])
+elif main_menu_choice == FOLDER and sub_main_menu_choice == NON_RECURSIVE:
+    hash_folder(ALGORITHM_NAMES[algorithm_choice], input("Enter DIR path:   "))
+elif main_menu_choice == FOLDER and sub_main_menu_choice == RECURSIVE:
+    hash_folder_recursive(ALGORITHM_NAMES[algorithm_choice], input("Enter DIR path:   "))
