@@ -3,6 +3,25 @@ import hashlib
 import time
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 clear = lambda: os.system('cls')
 hash_object = hashlib.md5(b"Hello world")
 
@@ -44,3 +63,6 @@ while main_menu_choice != 0:
     if main_menu_choice != 0:
         print_algorithms_menu()
 
+
+def print_hash_and_file_name(hash,file_name):
+    print()
