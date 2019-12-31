@@ -1,7 +1,7 @@
 import hashlib
 
 ALGORITHM_NAMES = list(hashlib.algorithms_guaranteed)
-
+ALGORITHM_NAMES.sort()
 
 def hash_data(data, algorithm):
     m = hashlib.new(algorithm)

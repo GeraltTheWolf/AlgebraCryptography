@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3727df51-3033-491a-ae7e-f211bb01185e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Lab08/private.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab08/receiver.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab08/script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/AlgebraCryptography.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AlgebraCryptography.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab07/sample2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab07/script.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab07/script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab07/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hashing/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hashing/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +48,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -78,6 +82,8 @@
       <workItem from="1576827247924" duration="227000" />
       <workItem from="1576827916153" duration="2681000" />
       <workItem from="1576864433182" duration="9511000" />
+      <workItem from="1576921635384" duration="130000" />
+      <workItem from="1576921784207" duration="4491000" />
     </task>
     <servers />
   </component>
@@ -85,10 +91,23 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2575" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1576827915256">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="585" y="115" key="CommitChangelistDialog2" timestamp="1576921839317">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="585" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1576921839317" />
+    <state x="739" y="275" key="FileChooserDialogImpl" timestamp="1576921432422">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="739" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1576921432422" />
+    <state x="461" y="163" key="SettingsEditor" timestamp="1576938538675">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1576938538675" />
+    <state x="655" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1576921784950">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="2575" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576827915256" />
+    <state x="655" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1576921784950" />
     <state x="3851" y="1138" width="1902" height="959" maximized="true" key="dock-window-1" timestamp="1576873203270">
       <screen x="3840" y="1065" width="1920" height="1020" />
     </state>
