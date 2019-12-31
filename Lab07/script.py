@@ -22,7 +22,7 @@ def hash_string(algorithm):
 
 
 def hash_file(algorithm):
-    result = helper_read_file(input("Enter FILE path:   "))
+    result = helper_read_file_test(input("Enter FILE path:   "))
     print(result[1] + " - " + hex(int(helper_string_to_bin(hash_data(result[0], algorithm)), 2)))
 
 

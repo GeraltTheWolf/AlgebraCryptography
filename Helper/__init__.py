@@ -59,3 +59,13 @@ def helper_read_file_names_in_directory(directory_path):
     else:
         print(directory_path + " is not a directory. Closing app.")
         exit()
+
+def helper_read_file_test(file_path):
+    if isfile(file_path):
+        try:
+            return open(file_path, encoding='utf-8').read()
+        except UnicodeDecodeError:
+            return Path(file_path).read_bytes()
+    else:
+        print(file_path + " is not a file. Closing app.")
+        exit()
