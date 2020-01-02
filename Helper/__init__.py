@@ -77,7 +77,6 @@ def helper_get_file_names_in_directory(absolute_path):
 
     """
     if isdir(absolute_path):
-        # return [os.path.join(absolute_path, f) for f in listdir(absolute_path) if isfile(join(absolute_path, f))]
         only_files = [os.path.join(absolute_path, f) for f in listdir(absolute_path) if isfile(join(absolute_path, f))]
         return [only_files, absolute_path]
     else:

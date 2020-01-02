@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3727df51-3033-491a-ae7e-f211bb01185e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/AlgebraCryptography.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AlgebraCryptography.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Helper/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab07/script.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab07/script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab08/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab08/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
