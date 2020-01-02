@@ -41,31 +41,65 @@ def helper_display_menu_(options, menu_type=MENU_MAIN):
 
 
 def helper_string_to_bin(string_input):
+    """
+
+    Args:
+        string_input: any string value will do
+
+    Returns:
+        binary string (001100111)
+
+    """
     return ''.join(format(ord(x), 'b') for x in string_input)
 
 
-def helper_read_file(file_path):
-    if isfile(file_path):
-        return [open(file_path, encoding='utf-8').read(), os.path.basename(file_path)]
+def helper_binary_to_hex(binary_string):
+    """
+
+    Args:
+        binary_string: The binary string (01000110)
+
+    Returns:
+        hex string (A12CD)
+
+    """
+    return hex(int(binary_string, 2))[2:].upper()
+
+
+def helper_get_file_names_in_directory(absolute_path):
+    """
+
+    Args:
+        absolute_path: Path to directory
+
+    Returns:
+        [[files],directory absolute path]
+
+    """
+    if isdir(absolute_path):
+        # return [os.path.join(absolute_path, f) for f in listdir(absolute_path) if isfile(join(absolute_path, f))]
+        only_files = [os.path.join(absolute_path, f) for f in listdir(absolute_path) if isfile(join(absolute_path, f))]
+        return [only_files, absolute_path]
     else:
-        print(file_path + " is not a file. Closing app.")
+        print(absolute_path + " is not a directory. Closing app.")
         exit()
 
 
-def helper_read_file_names_in_directory(directory_path):
-    if isdir(directory_path):
-        only_files = [f for f in listdir(directory_path) if isfile(join(directory_path, f))]
-        return [only_files, directory_path]
-    else:
-        print(directory_path + " is not a directory. Closing app.")
-        exit()
+def helper_read_file(absolute_path):
+    """
 
-def helper_read_file_test(file_path):
-    if isfile(file_path):
+    Args:
+        absolute_path: Path to file
+
+    Returns:
+        string or binary contents of the pointed-to file as a bytes object
+
+    """
+    if isfile(absolute_path):
         try:
-            return open(file_path, encoding='utf-8').read()
+            return open(absolute_path, encoding='utf-8').read()
         except UnicodeDecodeError:
-            return Path(file_path).read_bytes()
+            return Path(absolute_path).read_bytes()
     else:
-        print(file_path + " is not a file. Closing app.")
+        print(absolute_path + " is not a file. Closing app.")
         exit()

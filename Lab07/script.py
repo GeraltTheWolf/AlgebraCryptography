@@ -18,23 +18,23 @@ SUB_MENU_RECURSIVE_STRINGS = [["recursive", "non-recursive"], [RECURSIVE, NON_RE
 
 def hash_string(algorithm):
     input_string = input("Enter some string to hash: ")
-    print(hex(int(helper_string_to_bin(hash_data(input_string, algorithm)), 2)))
+    print(helper_binary_to_hex(helper_string_to_bin(hash_data(input_string, algorithm))))
 
 
-def hash_file(algorithm):
-    result = helper_read_file_test(input("Enter FILE path:   "))
-    print(result[1] + " - " + hex(int(helper_string_to_bin(hash_data(result[0], algorithm)), 2)))
+def hash_file(algorithm, file_path):
+    file = helper_read_file(file_path)
+    print(os.path.basename(file_path) + " - " + helper_binary_to_hex(helper_string_to_bin(hash_data(file, algorithm))))
 
 
 def hash_folder(algorithm, folder_path):
-    result = helper_read_file_names_in_directory(folder_path)
-    print("\r\nFOLDER" + os.path.basename(result[1]))
-    for r in result[0]:
+    result = helper_get_file_names_in_directory(folder_path)
+    print("\r\n------------- FOLDER " + os.path.basename(result[1]) + "-------------")
+    for file in result[0]:
         try:
-            read_file = helper_read_file(result[1] + "/" + r)
-            print(read_file[1] + " - " + hex(int(helper_string_to_bin(hash_data(read_file[0], algorithm)), 2)))
+            hash_file(algorithm, file)
         except:
-            print("Failed to read file" + r)
+            print("Failed to read file" + file)
+    print("--------------------- " + result[1] + " --------------------------")
 
 
 def hash_folder_recursive(algorithm, folder_path):
@@ -57,7 +57,7 @@ algorithm_choice = helper_get_menu_selection(len(ALGORITHM_NAMES))
 if main_menu_choice == STRING:
     hash_string(ALGORITHM_NAMES[algorithm_choice])
 elif main_menu_choice == FILE:
-    hash_file(ALGORITHM_NAMES[algorithm_choice])
+    hash_file(ALGORITHM_NAMES[algorithm_choice], input("Enter FILE path:   "))
 elif main_menu_choice == FOLDER and sub_main_menu_choice == NON_RECURSIVE:
     hash_folder(ALGORITHM_NAMES[algorithm_choice], input("Enter DIR path:   "))
 elif main_menu_choice == FOLDER and sub_main_menu_choice == RECURSIVE:
