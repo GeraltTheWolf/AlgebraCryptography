@@ -9,8 +9,21 @@ MENU_MAIN = 1
 MENU_SUBMENU = 2
 BACK_OR_EXIT = -1
 
+DUMMY_FOLDER_PATH: str = "../Resources/DummyFiles"
+DUMMY_FILE_PATH: str = "../Resources/DummyFiles/ZPZOrlpZAl.txt"
+
 
 def helper_get_menu_selection(max_menu_selection, menu_type=MENU_SUBMENU):
+    """
+
+    Args:
+        max_menu_selection: Maximum value of integer allowed from input. Should be len(menu_options).
+        menu_type: MENU_MAIN or MENU_SUBMENU. Main menu has exit and terminate application execution option
+
+    Returns:
+        integer
+
+    """
     user_input = 0
     while True:
         try:
@@ -32,6 +45,13 @@ def helper_get_menu_selection(max_menu_selection, menu_type=MENU_SUBMENU):
 
 
 def helper_display_menu_(options, menu_type=MENU_MAIN):
+    """
+
+    Args:
+        options: string array of options to display
+        menu_type: MENU_MAIN or MENU_SUBMENU. Main menu displays Exit option and Submenu displays Back option
+
+    """
     for i in range(len(options)):
         print(str(i) + " - " + options[i])
     if menu_type == MENU_MAIN:

@@ -56,9 +56,17 @@ algorithm_choice = helper_get_menu_selection(len(ALGORITHM_NAMES))
 
 if main_menu_choice == STRING:
     hash_string(ALGORITHM_NAMES[algorithm_choice])
-elif main_menu_choice == FILE:
-    hash_file(ALGORITHM_NAMES[algorithm_choice], input("Enter FILE path:   "))
-elif main_menu_choice == FOLDER and sub_main_menu_choice == NON_RECURSIVE:
-    hash_folder(ALGORITHM_NAMES[algorithm_choice], input("Enter DIR path:   "))
-elif main_menu_choice == FOLDER and sub_main_menu_choice == RECURSIVE:
-    hash_folder_recursive(ALGORITHM_NAMES[algorithm_choice], input("Enter DIR path:   "))
+else:
+    if main_menu_choice == FILE:
+        file_path = input("Enter FILE path:   ")
+        if not isfile(file_path):
+            file_path = DUMMY_FILE_PATH
+        hash_file(ALGORITHM_NAMES[algorithm_choice], file_path)
+    else:
+        folder_path = input("Enter FOLDER path:   ")
+        if not isdir(folder_path):
+            folder_path = DUMMY_FOLDER_PATH
+        if main_menu_choice == FOLDER and sub_main_menu_choice == NON_RECURSIVE:
+            hash_folder(ALGORITHM_NAMES[algorithm_choice], folder_path)
+        elif main_menu_choice == FOLDER and sub_main_menu_choice == RECURSIVE:
+            hash_folder_recursive(ALGORITHM_NAMES[algorithm_choice], folder_path)

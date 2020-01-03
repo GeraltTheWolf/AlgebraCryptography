@@ -112,16 +112,14 @@ menu_choice = helper_get_menu_selection(len(MENU_OPTIONS[0]), MENU_MAIN)
 
 if menu_choice == SINGLE_FILE:
     file_path = input("Enter FILE path:   ")
-    if len(file_path) <= 0:
-        file_path = "C:/test/bla.txt"
+    if not isfile(file_path):
+        file_path = DUMMY_FILE_PATH
     sign_single_file(file_path)
-elif menu_choice == ALL_FILES:
+else:
     folder_path = input("Enter FOLDER path:   ")
-    if len(folder_path) <= 0:
-        folder_path = "C:/test"
-    sign_all_files(folder_path)
-elif menu_choice == ALL_FILES_RECURSIVE:
-    folder_path = input("Enter FOLDER path:   ")
-    if len(folder_path) <= 0:
-        folder_path = "C:/test"
-    sign_all_files_recursively(folder_path)
+    if not isdir(folder_path):
+        folder_path = DUMMY_FOLDER_PATH
+    if menu_choice == ALL_FILES:
+        sign_all_files(folder_path)
+    elif menu_choice == ALL_FILES_RECURSIVE:
+        sign_all_files_recursively(folder_path)
