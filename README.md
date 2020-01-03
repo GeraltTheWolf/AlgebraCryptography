@@ -37,7 +37,7 @@ Library that we will be using is [https://docs.python.org/3/library/hashlib.html
 
 ## Lab 08
 
-Simple menue and digital signatures for:
+Simple menu and digital signatures for:
 
  - File
  - Directory
