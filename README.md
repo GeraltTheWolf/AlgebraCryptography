@@ -34,3 +34,15 @@ We need to create menu based on given task and to perform hashing of:
 	 - Recursive
 	 - Non recursive
 Library that we will be using is [https://docs.python.org/3/library/hashlib.html](https://docs.python.org/3/library/hashlib.html)
+
+## Lab 08
+
+Simple menue and digital signatures for:
+
+ - File
+ - Directory
+	 - Recursive
+	 - Non recursive
+	 
+Library that we will be using is [https://pycryptodome.readthedocs.io/en/latest/index.html](https://pycryptodome.readthedocs.io/en/latest/index.html)
+
