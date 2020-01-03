@@ -2,6 +2,10 @@
 
 This is repository contains code used in Cryptography course practice labs on Algebra university course.
 
+Project is built with PyCharm and using Python 3.73 default system interpreter
+
+Each Lab can use some dependency library that must be installed in order to work
+
 ## Lab 03
 
 Fixing some given python file and make it work.
@@ -9,6 +13,16 @@ Fixing some given python file and make it work.
 ## Lab 04
 
 Manipulating strings and decoding white-space encoded message "this is my string"
+
+Dependancies:
+
+[caesarcipher](https://pypi.org/project/caesarcipher/)
+
+Install dependencies:
+
+`
+pip install caesarcipher
+`
 
 ## Lab 05
 
@@ -33,7 +47,7 @@ Menu based on given task and to perform hashing of:
  - Directory
 	 - Recursive
 	 - Non recursive
-Library that we will be using is [https://docs.python.org/3/library/hashlib.html](https://docs.python.org/3/library/hashlib.html)
+	 
 
 ## Lab 08
 
@@ -44,5 +58,14 @@ Simple menu and digital signatures for:
 	 - Recursive
 	 - Non recursive
 	 
-Library that we will be using is [https://pycryptodome.readthedocs.io/en/latest/index.html](https://pycryptodome.readthedocs.io/en/latest/index.html)
+Dependancies:
+
+[PyCryptodome](https://pycryptodome.readthedocs.io/en/latest/index.html)
+
+Install dependencies:
+
+`
+pip install pycryptodomex
+`
+
 

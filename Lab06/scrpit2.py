@@ -107,10 +107,3 @@ otp2 = encrypt_xor(encrypted, decrypted)
 print("\nThis is decrypted text: " + bit_list_to_s(decrypted))
 
 save_to_file(generatedKey[1], encrypted)
-
-print()
-print("If the key is not supposed to be repeated partially nor fully, what is the maximum size of the message you can encrypt with this method as defined in the task?")
-print("Tolika kolika je veličina file-a")
-print()
-print("Explain why is the above claim correct!")
-print("Zato što na ozbiljnim algoritmima se radi godinama i rade ih znanstvenici i matematičari.")
