@@ -84,11 +84,12 @@ def helper_get_file_names_in_directory(absolute_path):
         exit()
 
 
-def helper_read_file(absolute_path):
+def helper_read_file(absolute_path, as_bytes=False):
     """
 
     Args:
         absolute_path: Path to file
+        as_bytes: flag to read file as bytes
 
     Returns:
         string or binary contents of the pointed-to file as a bytes object
@@ -96,7 +97,10 @@ def helper_read_file(absolute_path):
     """
     if isfile(absolute_path):
         try:
-            return open(absolute_path, encoding='utf-8').read()
+            if as_bytes:
+                return bytes(open(absolute_path, encoding='utf-8').read(), 'utf-8')
+            else:
+                return open(absolute_path, encoding='utf-8').read()
         except UnicodeDecodeError:
             return Path(absolute_path).read_bytes()
     else:
