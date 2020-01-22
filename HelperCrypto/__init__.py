@@ -2,7 +2,7 @@ import sys
 
 sys.path.append("..")
 from Helper import *
-from Cryptodome.PublicKey import DSA
+from Cryptodome.PublicKey import DSA,RSA
 from Cryptodome.Signature import DSS
 from Cryptodome.Hash import SHA256
 
@@ -30,6 +30,27 @@ def import_public_key(public_key_file_path):
 def import_private_key(private_key_file_path):
     f = open(private_key_file_path, "r")
     return DSA.import_key(f.read(), passphrase=PASSPHRASE)
+
+
+def generate_key_pair_rsa():
+    rsa_key_pair = RSA.generate(2048)
+    f = open(PUBLIC_KEY_FILE_NAME, "wb")
+    f.write(rsa_key_pair.publickey().exportKey())
+    f.close()
+    f2 = open(PRIVATE_KEY_FILE_NAME, "wb")
+    f2.write(rsa_key_pair.export_key(format="PEM"))
+    f2.close()
+    return rsa_key_pair
+
+
+def import_public_key_rsa(public_key_file_path):
+    f = open(public_key_file_path, "r")
+    return RSA.import_key(f.read())
+
+
+def import_private_key_rsa(privat_key_file_path):
+    f = open(privat_key_file_path, "r")
+    return RSA.import_key(f.read(), passphrase=PASSPHRASE)
 
 
 def generate_signature(file_to_sign, key):
