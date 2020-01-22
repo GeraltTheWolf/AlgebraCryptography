@@ -68,4 +68,23 @@ Install dependencies:
 pip install pycryptodomex
 `
 
+## Lab 09
+
+Simple menu and encryption using RSA and AES:
+
+ - File
+ - Directory
+	 - Recursive
+	 - Non recursive
+	 
+Dependancies:
+
+[PyCryptodome](https://pycryptodome.readthedocs.io/en/latest/index.html)
+
+Install dependencies:
+
+`
+pip install pycryptodomex
+`
+
 
